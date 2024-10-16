@@ -1,0 +1,32 @@
+<view class="fui-wrap">
+  <view class="fui-page__hd">
+    <view class="fui-page__title">Pagination</view>
+    <view class="fui-page__desc">Pagination 分页器，当数据量过多时，使用分页分解数据。</view>
+  </view>
+  <view class="fui-page__bd fui-page__spacing">
+    <view class="fui-section__title">基础使用</view>
+    <fui-pagination total="{{100}}" bindchange="change"></fui-pagination>
+    <view class="fui-section__title">样式调整</view>
+    <fui-pagination total="{{100}}" color="#FFB703" background="transparent" currentColor="#FFB703"></fui-pagination>
+    <view class="fui-section__title">自定义按钮内容</view>
+    <fui-pagination total="{{100}}" custom background="transparent">
+      <fui-icon name="arrowleft" slot="prev"></fui-icon>
+      <fui-icon name="arrowright" slot="next"></fui-icon>
+    </fui-pagination>
+    <view class="fui-section__title">页码展开</view>
+			<fui-pagination total="{{1000}}" pageType="{{2}}"></fui-pagination>
+			<view class="fui-section__title">页码展开/调整样式</view>
+			<view class="fui-pageno__wrap">
+				<fui-pagination total="{{1000}}" custom pageType="{{2}}" width="{{62}}" background="#FFB703"
+					pageBgColor="rgba(255, 183, 3, .1)" activeBgColor="#FFB703">
+						<fui-icon slot="prev" size="40" name="arrowleft" color="#fff"></fui-icon>
+						<fui-icon slot="next" size="40" name="arrowright" color="#fff"></fui-icon>
+				</fui-pagination>
+			</view>
+			<view class="fui-section__title">页码展开/按钮宽度设为60</view>
+			<fui-pagination total="{{1000}}" custom pageType="{{2}}" width="{{60}}" background="#09BE4F" pageBgColor="rgba(9, 190, 79, .05)" activeBgColor="#09BE4F">
+					<fui-icon slot="prev" size="40" name="arrowleft" color="#fff"></fui-icon>
+					<fui-icon slot="next" size="40" name="arrowright" color="#fff"></fui-icon>
+			</fui-pagination>
+  </view>
+</view>
