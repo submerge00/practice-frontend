@@ -56,11 +56,11 @@
   font-size: var(--td-button-medium-icon-font-size, 40rpx);
 }
 .t-button--size-large {
-  font-size: var(--td-button-large-font-size, var(--td-font-size-m, 32rpx));
+  font-size: var(--td-button-large-font-size, var(--td-font-size-m, 40rpx));
   padding-left: var(--td-button-large-padding-horizontal, 40rpx);
   padding-right: var(--td-button-large-padding-horizontal, 40rpx);
-  height: var(--td-button-large-height, 96rpx);
-  line-height: var(--td-button-large-height, 96rpx);
+  height: var(--td-button-large-height, 300rpx);
+  line-height: var(--td-button-large-height, 300rpx);
 }
 .t-button--size-large .t-button__icon {
   font-size: var(--td-button-large-icon-font-size, 48rpx);
@@ -485,7 +485,7 @@
   padding: 0;
 }
 .t-button--square.t-button--size-large {
-  width: var(--td-button-large-height, 96rpx);
+  width: var(--td-button-large-height, 300rpx);
 }
 .t-button--square.t-button--size-medium {
   width: var(--td-button-medium-height, 80rpx);

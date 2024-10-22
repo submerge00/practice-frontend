@@ -2,7 +2,11 @@
   "pages": [
     "pages/home/home",
     "pages/study/study",
-    "pages/mine/mine"
+    "pages/mine/mine",
+    "pages/paper/paper",
+    "pages/classify/classify",
+    "pages/wrong/wrong",
+    "pages/collection/collection"
   ],
   "window": {
     "navigationBarTextStyle": "black",
@@ -18,20 +22,20 @@
       {
         "pagePath": "pages/home/home",
         "text": "首页",
-        "iconPath": "/image/main.png",
-        "selectedIconPath": "/image/main.png"
+        "iconPath": "/icon/main.png",
+        "selectedIconPath": "/icon/main.png"
       },
       {
         "pagePath": "pages/study/study",
         "text": "学习",
-        "iconPath": "/image/study.png",
-        "selectedIconPath": "/image/study.png"
+        "iconPath": "/icon/study.png",
+        "selectedIconPath": "/icon/study.png"
       },
       {
         "pagePath": "pages/mine/mine",
         "text": "我的",
-        "iconPath": "/image/mine.png",
-        "selectedIconPath": "/image/mine.png"
+        "iconPath": "/icon/mine.png",
+        "selectedIconPath": "/icon/mine.png"
       }
     ]
   },
@@ -39,6 +43,5 @@
   "sitemapLocation": "sitemap.json",
   "lazyCodeLoading": "requiredComponents",
   "usingComponents": {
-    "t-button": "tdesign-miniprogram/button/button"
   }
 }

@@ -1,3 +1,17 @@
 <!--pages/home/home.wxml-->
-<text>pages/home/home.wxml</text>
-<t-button theme="primary">按钮</t-button>
+<view>
+  <view style="display:flex;justify-content:center">
+    <t-image src="{{imageSrc}}" width="385" height="220"  />
+  </view>
+</view>
+<view >
+  <view class="button-example">
+    <t-button size="large" shape="square" bind:tap="toPaper" variant="outline" >试卷</t-button>
+    <t-button size="large"  shape="square"  bind:tap="toClassify" variant="outline">分类</t-button>
+    <t-icon name="{{item}}" size="48rpx" data-name="{{item}}" bind:click="onIconTap" />
+  </view>
+  <view class="button-example">
+    <t-button  size="large" shape="square" bind:tap="toWrong" variant="outline">错题</t-button>
+    <t-button size="large"  shape="square" bind:tap="toCollection"  variant="outline">收藏</t-button>
+  </view>
+</view>

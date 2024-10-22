@@ -1,35 +1,11 @@
-// pages/home/home.js
+// pages/classify/classify.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    imageSrc: '/image/屏幕截图 2024-10-16 131614.png',
-  },
-  toPaper()
-  {
-    wx.navigateTo({
-      url: '../paper/paper',
-    })
-  },
-  toCollection()
-  {
-    wx.navigateTo({
-      url: '../collection/collection',
-    })
-  },
-  toWrong()
-  {
-    wx.navigateTo({
-      url: '../wrong/wrong',
-    })
-  },
-  toClassify()
-  {
-    wx.navigateTo({
-      url: '../classify/classify',
-    })
+
   },
 
   /**
