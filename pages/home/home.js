@@ -7,30 +7,6 @@ Page({
   data: {
     imageSrc: '/image/屏幕截图 2024-10-16 131614.png',
   },
-  toPaper()
-  {
-    wx.navigateTo({
-      url: '../paper/paper',
-    })
-  },
-  toCollection()
-  {
-    wx.navigateTo({
-      url: '../collection/collection',
-    })
-  },
-  toWrong()
-  {
-    wx.navigateTo({
-      url: '../wrong/wrong',
-    })
-  },
-  toClassify()
-  {
-    wx.navigateTo({
-      url: '../classify/classify',
-    })
-  },
 
   /**
    * 生命周期函数--监听页面加载
@@ -87,4 +63,61 @@ Page({
   onShareAppMessage() {
 
   }
-})
+});
+/*
+轮播图
+*/
+const imageCdn = 'https://tdesign.gtimg.com/mobile/demos';
+const swiperList = [
+  `${imageCdn}/swiper1.png`,
+  `${imageCdn}/swiper2.png`,
+  `${imageCdn}/swiper1.png`,
+  `${imageCdn}/swiper2.png`,
+  `${imageCdn}/swiper1.png`,
+];
+
+Component({
+  data: {
+    current: 0,
+    autoplay: false,
+    duration: 500,
+    interval: 5000,
+    swiperList,
+  },
+
+  methods: {
+    onChange(e) {
+      const {
+        detail: { current, source },
+      } = e;
+      console.log(current, source);
+    },
+    toPaper()
+    {
+      wx.navigateTo({
+        url: '../paper/paper',
+      })
+    },
+    toCollection()
+    {
+      wx.navigateTo({
+        url: '../collection/collection',
+      })
+    },
+    toWrong()
+    {
+      wx.navigateTo({
+        url: '../wrong/wrong',
+      })
+    },
+    toClassify()
+    {
+      wx.navigateTo({
+        url: '../classify/classify',
+      })
+    },
+  },
+});
+/*
+图标
+*/

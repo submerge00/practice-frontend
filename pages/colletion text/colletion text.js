@@ -1,4 +1,4 @@
-// pages/paper/paper.js
+// pages/test paper/test paper.js
 Page({
 
   /**
@@ -64,19 +64,15 @@ Page({
 
   }
 })
-
 Component({
   data: {
-  
+    value: 2,
+    array: ['A.大学计算机期末考试', 'B.计算机二级office', 'C.毛概期末考试', 'D.中国近代史期末考试'],
   },
-
   methods: {
-    toStart()
-    {
-      wx.navigateTo({
-        url: '../subject/subject',
-      })
-    }
+    onChange(e) {
+      this.setData({ value: e.detail.value });
+    },
     
   },
 });

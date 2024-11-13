@@ -6,11 +6,19 @@
     "pages/paper/paper",
     "pages/classify/classify",
     "pages/wrong/wrong",
-    "pages/collection/collection"
+    "pages/collection/collection",
+    "pages/test paper/test paper",
+    "pages/subject/subject",
+    "pages/wrong detail/wrong detail",
+    "pages/wrong text/wrong text",
+    "pages/colletion detail/colletion detail",
+    "pages/colletion text/colletion text",
+    "pages/all/all",
+    "pages/selectpaper/selectpaper"
   ],
   "window": {
     "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "Weixin",
+    "navigationBarTitleText": "答题小程序",
     "navigationBarBackgroundColor": "#ffffff"
   },
   "tabBar": {

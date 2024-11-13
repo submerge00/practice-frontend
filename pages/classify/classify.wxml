@@ -1,2 +1,19 @@
-<!--pages/classify/classify.wxml-->
-<text>pages/classify/classify.wxml</text>
+<!--pages/paper/paper.wxml-->
+<view class="container">
+  <view class="box">专项练习</view>
+  
+  <view class="stack-top">
+    <view class="button-text">
+      <text>选择题</text>
+      <button bind:tap="toStart">选择</button>
+    </view>
+    <view class="button-text">
+      <text>判断题</text>
+      <button bind:tap="toStart">选择</button>
+    </view>
+    <view class="button-text">
+      <text >多选题</text>
+      <button bind:tap="toStart">选择</button>
+    </view>  
+  </view>
+</view>

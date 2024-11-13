@@ -18,9 +18,56 @@
 }
 
 .button-example {
-  margin: 32rpx;
+  width: 100vw;
+  height: 45vw;
   display: flex;
   justify-content: space-between;
 }
+.button-item{
+  width: 45%;
+  height: 90%;
+  margin-bottom: 20rpx;
+  padding-top: 5%;
+  color: rgb(85, 85, 85);
+  border-radius: 30rpx;
+  box-shadow: 5px -5px 5px 1px rgb(224, 224, 224);
+}
+.button-icon{
+  color:rgb(130, 153, 194);
+}
+/*
+轮播图
+*/
+.card-theme {
+  --td-swiper-radius: 0;
+  --td-swiper-item-padding: 0 12rpx;
+  --td-swiper-nav-dot-color: var(--td-bg-color-component, #e7e7e7);
+  --td-swiper-nav-dot-active-color: var(--td-brand-color, #0052d9);
+
+  padding-bottom: 18px;
+}
+
+.card-theme .card-theme-nav {
+  bottom: -18px;
+}
+
+.scale-candidate {
+  height: 126px !important;
+}
+/*
+图标
+*/
+.demo__list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
 
 
+
+.demo__card-name {
+  font-size: 24rpx;
+  padding-left: 5rpx;
+  padding-right: 5rpx;
+  color: #999;
+}

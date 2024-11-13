@@ -1,2 +1,18 @@
 <!--pages/paper/paper.wxml-->
-<text>pages/paper/paper.wxml</text>
+<view class="container">
+  <view class="box">选择科目</view>
+  
+  <view class="stack-top">
+    <view class="button-text" wx:for="{{array}}" wx:key="id">
+      <text >{{item}}</text>
+      
+      <button bind:tap="toStart">选择</button>
+    </view>
+    
+  </view>
+ 
+    
+  
+  
+
+</view>

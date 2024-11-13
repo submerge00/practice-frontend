@@ -1,4 +1,4 @@
-// pages/paper/paper.js
+// pages/wrong detail/wrong detail.js
 Page({
 
   /**
@@ -64,17 +64,28 @@ Page({
 
   }
 })
-
 Component({
   data: {
-  
+    array: [
+      {
+        question: "下列哪个数是偶数？",
+        options: ["A. 3", "B. 5", "C. 8", "D. 7"],
+        answer: "C"
+      },
+      {
+        question: "如果一个三角形的两边长分别为4厘米和6厘米，那么第三边的可能长度（单位：厘米）是？",
+        options: ["A. 1", "B. 10", "C. 2", "D. 9"],
+        answer: "D"
+      }],
+    
+
   },
 
   methods: {
     toStart()
     {
       wx.navigateTo({
-        url: '../subject/subject',
+        url: '../colletion text/colletion text',
       })
     }
     

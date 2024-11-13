@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    
   },
 
   /**
@@ -67,14 +67,16 @@ Page({
 
 Component({
   data: {
-  
+    array: ['计算机综合', '软件工程基础', '栈和队列', '考研红宝书'],
+    
+
   },
 
   methods: {
     toStart()
     {
       wx.navigateTo({
-        url: '../subject/subject',
+        url: '../test paper/test paper',
       })
     }
     

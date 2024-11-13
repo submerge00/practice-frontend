@@ -1,13 +1,18 @@
 <!--pages/paper/paper.wxml-->
 <view class="container">
-  <view class="box">收藏</view>
+  <view class="box">选择试题</view>
   
   <view class="stack-top">
     <view class="button-text" wx:for="{{array}}" wx:key="id">
       <text >{{item}}</text>
       
-      <button bind:tap="toStart">查看</button>
+      <button bind:tap="toStart">答题</button>
     </view>
     
   </view>
+ 
+    
+  
+  
+
 </view>

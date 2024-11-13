@@ -1,4 +1,4 @@
-// pages/paper/paper.js
+// pages/test paper/test paper.js
 Page({
 
   /**
@@ -64,19 +64,25 @@ Page({
 
   }
 })
-
 Component({
   data: {
-  
+    value: -1,
+    value1: [-1, -1],
+    array: ['A.大学计算机期末考试', 'B.计算机二级office', 'C.毛概期末考试', 'D.中国近代史期末考试'],
+    TorF:['正确','错误'],
   },
-
   methods: {
+    onChange(e) {
+      this.setData({ value: e.detail.value });
+    },
+    onChange1(e) {
+      this.setData({ value1: e.detail.value });
+    },
     toStart()
     {
       wx.navigateTo({
-        url: '../subject/subject',
+        url: '../all/all',
       })
     }
-    
   },
 });

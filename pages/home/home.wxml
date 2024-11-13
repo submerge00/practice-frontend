@@ -1,17 +1,48 @@
 <!--pages/home/home.wxml-->
 <view>
-  <view style="display:flex;justify-content:center">
-    <t-image src="{{imageSrc}}" width="385" height="220"  />
+  <view class="card-theme">
+    <t-swiper
+    class="scale-card-theme"
+    current="{{current}}"
+    autoplay="{{autoplay}}"
+    duration="{{duration}}"
+    interval="{{interval}}"
+    bindchange="onChange"
+    navigation="{{ { type: 'dots' } }}"
+    list="{{swiperList}}"
+    image-props="{{ { shape: 'round' } }}"
+    previousMargin="34px"
+    nextMargin="34px"
+    t-class-nav="card-theme-nav"
+    t-class-prev-image="scale-candidate"
+    t-class-next-image="scale-candidate"
+    height="240px"
+  />
   </view>
-</view>
+  <view>
+    <t-divider />
+    <view class="demo__list">
+    <t-icon name="check" size="35rpx" color="blue" />
+    <text class="demo__card-name">智能练习，自创题库 </text>
+    <t-icon name="check" size="35rpx" color="blue" />
+    <text class="demo__card-name">记录错题，高效复习 </text>
+    <t-icon name="check" size="35rpx" color="blue"  />
+    <text class="demo__card-name">题海战术，梦想启航 </text>
+    </view>
+    
+    <t-divider />
+  </view>
 <view >
   <view class="button-example">
-    <t-button size="large" shape="square" bind:tap="toPaper" variant="outline" >试卷</t-button>
-    <t-button size="large"  shape="square"  bind:tap="toClassify" variant="outline">分类</t-button>
-    <t-icon name="{{item}}" size="48rpx" data-name="{{item}}" bind:click="onIconTap" />
+    <button class="button-item" bind:tap="toPaper">
+      <t-icon name="pen-ball" size="170rpx" class="button-icon"/>综合练习</button>
+    <button class="button-item" bind:tap="toClassify">
+      <t-icon name="file-copy" size="170rpx" class="button-icon"/>
+    专项练习</button>
   </view>
   <view class="button-example">
-    <t-button  size="large" shape="square" bind:tap="toWrong" variant="outline">错题</t-button>
-    <t-button size="large"  shape="square" bind:tap="toCollection"  variant="outline">收藏</t-button>
+    <button  class="button-item" bind:tap="toWrong" ><t-icon name="task-error" size="170rpx" class="button-icon"/>错题</button>
+    <button class="button-item" bind:tap="toCollection"><t-icon name="certificate-1" size="170rpx" class="button-icon"/>收藏</button>
   </view>
+</view>
 </view>

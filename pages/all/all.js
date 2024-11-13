@@ -1,4 +1,4 @@
-// pages/paper/paper.js
+// pages/all/all.js
 Page({
 
   /**
@@ -64,19 +64,10 @@ Page({
 
   }
 })
-
 Component({
   data: {
-  
-  },
-
-  methods: {
-    toStart()
-    {
-      wx.navigateTo({
-        url: '../subject/subject',
-      })
-    }
-    
+    img1: 'https://tdesign.gtimg.com/mobile/demos/example1.png',
+    img2: 'https://tdesign.gtimg.com/mobile/demos/example2.png',
+    img3: 'https://tdesign.gtimg.com/mobile/demos/example3.png',
   },
 });
