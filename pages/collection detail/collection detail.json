@@ -3,6 +3,7 @@
   "usingComponents": {
     "t-cell": "tdesign-miniprogram/cell/cell",
     "t-switch": "tdesign-miniprogram/switch/switch",
-    "t-divider": "tdesign-miniprogram/divider/divider"
+    "t-divider": "tdesign-miniprogram/divider/divider",
+    "t-search": "tdesign-miniprogram/search/search"
   }
 }

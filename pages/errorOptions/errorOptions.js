@@ -14,7 +14,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    let arr=wx.getStorageSync('subjectNow')
+    let arr=wx.getStorageSync('errorOptions')
     console.log('错题集',arr)
     if(arr&&arr.length>0)
     {

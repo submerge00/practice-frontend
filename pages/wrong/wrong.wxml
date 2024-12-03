@@ -1,6 +1,10 @@
 <!--pages/paper/paper.wxml-->
 <view class="container">
-  <view class="box">错题</view>
+  <view class="box">
+    <view class="example-search">
+    <t-search placeholder="搜索题库" shape="round" />
+    </view>
+  </view>
   
   <view class="stack-top">
     <view class="button-text" wx:for="{{array}}" wx:key="id">

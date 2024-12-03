@@ -5,6 +5,10 @@
   padding-top: 20rpx;
   height:auto ;
 }
+.progress-box{
+  margin: 10rpx;
+}
+
 .title{
   border:1px dashed rgb(110, 110, 110);
   padding:20rpx 30rpx;
@@ -36,13 +40,20 @@
 .change{
   display: inline-flex;
   padding-left: 5px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.collect{
+  display: inline-flex;
+  padding-left: 5px;
+
 }
 .button-iteml{
-  color: skyblue;
+  color: #0052d9;
 }
 .button-item{
   margin-left: 65vw;
-  color: skyblue;
+  color: #0052d9;
 }
 
 .card {
@@ -55,7 +66,7 @@
 }
 
 .card--active {
-  border-color: var(--td-brand-color, #0052d9);
+  border-color: var(--td-brand-color, #ff0000);
 }
 
 .card--active::after {
@@ -67,7 +78,7 @@
   width: 0;
   border-width: 28px 28px 28px 0;
   border-style: solid;
-  border-color: var(--td-brand-color, #0052d9) transparent transparent transparent;
+  border-color: var(--td-brand-color, #ff0000) transparent transparent transparent;
 }
 
 .card__icon {
@@ -89,5 +100,19 @@
   color: #fff;
 }
 
+.btn_root{
+  display: flex;
+  justify-content: space-between;
+  margin:30rpx;
+}
+button{
+  color: rgb(32, 107, 245);
+  border: 1px solid rgb(32, 107, 245);
+  width: 25%;
+  height: 45px;
+  font-size: 16px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 15px;
+}
 
 

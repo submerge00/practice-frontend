@@ -1,4 +1,5 @@
 <!--pages/test paper/test paper.wxml-->
+<!--pages/test paper/test paper.wxml-->
 <view class="body">
   <view class="collect">
     <view class="button-iteml">收藏</view>
@@ -33,6 +34,15 @@
     </view>
     
     <view class="title">
+      <view>
+      正确答案是：
+      <text wx:for="{{subject.answer}}" wx:key="answer" >{{item}}</text>
+      </view>
+
+      <view>
+        您的选择是：
+        <text wx:for="{{subject.select}}" wx:key="select">{{item}}</text>
+      </view>
       <view>
           解析：
           <text wx:for="{{subject.explain}}" wx:key="select">{{item}}</text>

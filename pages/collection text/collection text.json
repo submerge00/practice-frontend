@@ -4,6 +4,8 @@
     "t-divider": "tdesign-miniprogram/divider/divider",
     "t-radio-group": "tdesign-miniprogram/radio-group/radio-group",
     "t-radio": "tdesign-miniprogram/radio/radio",
-    "t-icon": "tdesign-miniprogram/icon/icon"
+    "t-icon": "tdesign-miniprogram/icon/icon",
+    "t-checkbox-group": "tdesign-miniprogram/checkbox-group/checkbox-group",
+    "t-checkbox": "tdesign-miniprogram/checkbox/checkbox"
   }
 }

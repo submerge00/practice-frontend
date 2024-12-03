@@ -73,11 +73,10 @@ Component({
   methods: {
     toStart(e)
     {
-      let subjectNow=titles;
-      console.log(subjectNow)
-      wx.setStorageSync('subjectNow', subjectNow)
+      let collections=titles;
+      wx.setStorageSync('collections', collections)
       wx.navigateTo({
-        url: '../wrong text/wrong text',
+        url: '../collection text/collection text',
       })
     },
     onLoad() {

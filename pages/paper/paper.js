@@ -1,4 +1,4 @@
-// pages/paper/paper.js
+import ActionSheet, { ActionSheetTheme } from '../../miniprogram_npm/tdesign-miniprogram/action-sheet/index';
 Page({
 
   /**
@@ -8,11 +8,8 @@ Page({
     
   },
 
-
-
-
   /**
-   * 生命周期函数_监听页面加载
+   * 生命周期函数--监听页面加载
    */
   onLoad(options) {
 
@@ -24,6 +21,7 @@ Page({
   onReady() {
 
   },
+
   /**
    * 生命周期函数--监听页面显示
    */
@@ -70,17 +68,46 @@ Page({
 Component({
   data: {
     array: ['大学计算机期末考试', '计算机二级office', '毛概期末考试', '中国近代史期末考试', '马克思原理期末考试','形式与政策','1','2'],
-    
-
+    value: '',
+    placement: 'right',
+   
   },
 
   methods: {
     toStart()
     {
       wx.navigateTo({
-        url: '../selectpaper/selectpaper',
+        url: '../test paper/test paper',
       })
-    }
-    
+    },
+    onChange(e) {
+      console.log(e.detail.value);
+    },
+    showDescAction() {
+      ActionSheet.show({
+        theme: ActionSheetTheme.List,
+        selector: '#t-action-sheet',
+        context: this,
+        description: '大学生计算机期末考试试题',
+        items: [
+          {
+            label: '顺序练习',
+          },
+          {
+            label: '随机答题',
+          },
+          
+        ],
+      });
+    },
+    handleSelected(e) {
+      console.log(e.detail);
+      if(e.detail.selected.label=='随机答题')
+      {
+        wx.navigateTo({
+          url: '../test paper/test paper',
+        })
+      }
+    },
   },
 });

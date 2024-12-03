@@ -1,6 +1,10 @@
 {
+  "styleIsolation": "apply-shared",
   "usingComponents": {
     "t-button": "tdesign-miniprogram/button/button",
-    "t-divider": "tdesign-miniprogram/divider/divider"
+    "t-divider": "tdesign-miniprogram/divider/divider",
+    "t-search": "tdesign-miniprogram/search/search",
+    "t-drawer": "tdesign-miniprogram/drawer/drawer",
+    "t-action-sheet": "tdesign-miniprogram/action-sheet/action-sheet"
   }
 }
