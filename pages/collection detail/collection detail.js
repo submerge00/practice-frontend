@@ -73,8 +73,11 @@ Component({
   methods: {
     toStart(e)
     {
+      console.log(e)
       let collections=titles;
+      let index=e.currentTarget.dataset.index;
       wx.setStorageSync('collections', collections)
+      wx.setStorageSync('index', index)
       wx.navigateTo({
         url: '../collection text/collection text',
       })

@@ -74,8 +74,10 @@ Component({
     toStart(e)
     {
       let subjectNow=titles;
+      let index=e.currentTarget.dataset.index;
       console.log(subjectNow)
       wx.setStorageSync('subjectNow', subjectNow)
+      wx.setStorageSync('index', index)
       wx.navigateTo({
         url: '../wrong text/wrong text',
       })

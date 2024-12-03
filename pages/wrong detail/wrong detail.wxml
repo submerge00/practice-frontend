@@ -8,8 +8,8 @@
   
   <t-divider/>
   <view>
-    <view  wx:for="{{subjects}}" wx:key="id">
-      <t-cell bind:tap="toStart" data-item="{{item}}" description="{{item.title}}" hover arrow />   
+    <view  wx:for="{{subjects}}"wx:for-index='index' wx:key="id">
+      <t-cell bind:tap="toStart" data-item="{{item}}"data-index="{{index}}" description="{{item.title}}" hover arrow />   
     </view>
   </view>
 </view>

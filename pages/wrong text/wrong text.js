@@ -15,14 +15,16 @@ Page({
    */
   onLoad(options) {
     let arr=wx.getStorageSync('subjectNow')
+    let index=wx.getStorageSync('index')
     console.log('错题集',arr)
     if(arr&&arr.length>0)
     {
       titles=arr
     }
     this.setData({
-      subject:titles[0],
-      total:titles.length
+      subject:titles[index],
+      total:titles.length,
+      current:index+1
     })
     console.log('错题集',titles)
   },
