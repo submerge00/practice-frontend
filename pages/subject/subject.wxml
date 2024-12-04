@@ -5,21 +5,17 @@
     <t-search placeholder="搜索题库" shape="round" />
     </view>
   </view>
-   
   
   <view class="stack-top">
     <view class="button-text" wx:for="{{array}}" wx:key="id">
-      <text >{{item.name}}</text>
+      <text class='item-text' >{{item.name}}</text>
       
-      <button bind:tap="showDescAction" data-item="{{item}}">查看</button>
+      <button bind:tap="showDescAction"  data-item="{{item}}">查看</button>
+
     </view>
     
   </view>
-
-  <t-action-sheet id="t-action-sheet" usingCustomNavbar bind:selected="handleSelected" />
- 
-    
-  
   
 
 </view>
+<t-action-sheet id="t-action-sheet" usingCustomNavbar bind:selected="handleSelected" />

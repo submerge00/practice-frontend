@@ -8,9 +8,9 @@
   
   <view class="stack-top">
     <view class="button-text" wx:for="{{array}}" wx:key="id">
-      <text class='item-text' >{{item}}</text>
+      <text class='item-text' >{{item.name}}</text>
       
-      <button bind:tap="showDescAction">查看</button>
+      <button bind:tap="showDescAction"  data-item="{{item}}">查看</button>
 
     </view>
     

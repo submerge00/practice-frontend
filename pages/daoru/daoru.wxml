@@ -1,0 +1,78 @@
+<!--pages/daoru/daoru.wxml-->
+<view class="top-bg"></view>
+
+<view class="box">
+  <view class="import-type">
+    <button class="single-import">单题导入</button>
+    <button class="batch-import" bindtap="BatchImport">批量导入</button>
+  </view>
+  <!-- 表单内容 -->
+<view class="Form">
+  <!-- 题型选择 -->
+  <view class="form-group">
+    <!-- <text class="form-label">题型选择：</text> -->
+    <t-cell title="请选择题型" arrow hover note="{{city2Text}}" bind:click="onWithoutTitlePicker" />
+    <t-picker
+      visible="{{city2Visible}}"
+      value="{{city2Value}}"
+      data-key="city2"
+      title="{{city2Title}}"
+      cancelBtn="取消"
+      confirmBtn="确认"
+      usingCustomNavbar
+      bindchange="onPickerChange"
+      bindpick="onColumnChange"
+      bindcancel="onPickerCancel"
+    >
+      <t-picker-item options="{{types}}"></t-picker-item>
+    </t-picker>
+  </view>
+
+  <!-- 题干输入 -->
+  <view class="form-item">
+    <text class="label">题干：</text>
+    <textarea class="tigan-content" placeholder="请输入题干内容" bindinput="onStemInput"></textarea>
+  </view>
+
+  <!-- 图片输入（可选） -->
+  <view class="form-item">
+    <text class="label">图片（可选）：</text>
+    <button class="upload-btn" bindtap="onUploadImage">上传图片</button>
+    <view wx:if="{{imageUrl}}" class="image-preview">
+      <image src="{{imageUrl}}" class="preview-img" />
+    </view>
+  </view>
+
+  <!-- 选项输入 -->
+  <view class="form-item">
+    <text class="label">选项：</text>
+    <view wx:for="{{['A', 'B', 'C', 'D']}}" wx:key="index" class="option-item">
+      <text class="option-label">{{item}}:</text>
+      <input class="option-content" placeholder="请输入选项内容" bindinput="onOptionInput" data-option="{{item}}" />
+    </view>
+  </view>
+
+ <!-- 正确选项 -->
+<view class="form-item">
+  <text class="label">正确选项：</text>
+  <radio-group bindchange="onCorrectOptionChange">
+    <label wx:for="{{['A', 'B', 'C', 'D']}}" wx:key="index" class="radio-label">
+      <radio value="{{item}}" checked="{{correctOption === item}}" /> {{item}}
+    </label>
+  </radio-group>
+</view>
+
+  <!-- 题目解析（可选） -->
+  <view class="form-item">
+    <text class="label">题目解析（可选）：</text>
+    <textarea class="jiexi-content" placeholder="请输入解析内容" bindinput="onAnalysisInput"></textarea>
+  </view>
+
+  <!-- 按钮 -->
+  <view class="button-group">
+    <button class="submit-btn" bindtap="onSubmit">提交</button>
+    <button class="cancel-btn" bindtap="onCancel">取消</button>
+  </view>
+</view>
+</view>
+

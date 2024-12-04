@@ -1,2 +1,76 @@
-<!--pages/study/study.wxml-->
-<text>pages/study/study.wxml</text>
+<!-- pages/study/study.wxml -->
+<view class="top-bg"></view>
+
+<view class="box">
+  <view class="search-bar">
+    <view class="search-icon">
+      <t-icon name="search" size="48rpx" data-name="search" bindtap="onSearchTap" />
+    </view>
+    <input class="search-input" type="text" placeholder="输入你想搜索的内容" bindinput="onInputChange" />
+    <button class="search-btn" bindtap="onSearchTap">搜索</button>
+  </view>
+
+  <view class="list-bar">
+    <block wx:for="{{filteredList}}" wx:key="id">
+      <view class="list-item">
+        <view class="title">{{item.title}}</view>
+        <view class="description">{{item.description}}</view>
+        <view class="buttons">
+          <t-button class="button-left" theme="primary" size="extra-small" shape="round" bindtap="onImport" style="background-color:rgb(204, 230, 255);color:rgb(77, 166, 254)" variant="text">导入</t-button>
+          <t-button class="button-right" theme="primary" size="extra-small" shape="round" bindtap="onModify" style="background-color:rgb(215, 240, 219);color:rgb(109, 202, 123)" variant="text">修改</t-button>
+        </view>
+      </view>
+    </block>
+    <!-- 如果没有搜索到任何题库 -->
+    <view wx:if="{{filteredList.length === 0}}" class="no-result">
+    </view>
+  </view>
+</view>
+
+<view class="tab">
+  <t-fab
+    icon="add"
+    bind:click="showInputModal"
+    aria-label="增加"
+    usingCustomNavbar
+    draggable
+    y-bounds="{{[0, 32]}}"
+  ></t-fab>
+</view>
+
+<!-- 输入框模态框 -->
+<view wx:if="{{showModal}}" class="modal">
+  <view class="modal-content">
+    <view class="input-container">
+      <text>题库名称</text>
+      <input type="text" class="input-style" 
+        placeholder="请输入新题库科目名" 
+        bindinput="handleInputChange" value="{{newSubject.name}}"/>
+    </view>
+    <view class="introducing">
+      <text class="introducing-title">题库简介</text>
+      <view class="textarea-example">
+        <textarea
+          placeholder="请输入文字"
+          maxlength="100"
+          bindinput="handleDescriptionChange"value="{{newSubject.description}}"
+          />
+      </view>
+    </view>
+    <view class="radio-container">
+      <text class="radio-title">选择属性：</text>
+      <radio-group class="radio-group" bindchange="onRadioChange">
+        <label class="radio-item">
+          <radio value="0" checked="{{newSubject.isPublic === 0}}" /> 公开
+        </label>
+        <label class="radio-item">
+          <radio value="1" checked="{{newSubject.isPublic === 1}}" /> 私有
+        </label>
+      </radio-group>
+    </view>
+    <view class="button-example">
+      <button bindtap="addSubject">确定</button>
+      <button bindtap="closeModal">取消</button>
+    </view>
+  </view>
+</view>
