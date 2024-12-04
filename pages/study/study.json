@@ -1,3 +1,20 @@
 {
-  "usingComponents": {}
+  "navigationBarTitleText": "",
+  "navigationBarBackgroundColor": "#FFFFFF",
+  "usingComponents": { 
+  "fui-section":"/components/firstui/fui-section/fui-section",
+  "fui-divider": "/components/firstui/fui-divider/fui-divider",
+  "t-navbar": "tdesign-miniprogram/navbar/navbar",
+  "t-icon": "tdesign-miniprogram/icon/icon",
+  "t-fab": "tdesign-miniprogram/fab/fab",
+  "t-side-bar": "tdesign-miniprogram/side-bar/side-bar",
+  "t-side-bar-item": "tdesign-miniprogram/side-bar-item/side-bar-item",
+  "t-button": "tdesign-miniprogram/button/button",
+  "t-input": "tdesign-miniprogram/input/input",
+  "t-textarea": "tdesign-miniprogram/textarea/textarea",
+  "t-search": "tdesign-miniprogram/search/search",
+  "fui-pagination": "/components/firstui/fui-pagination/fui-pagination",
+  "t-toast": "tdesign-miniprogram/toast/toast"
+  }
+    
 }

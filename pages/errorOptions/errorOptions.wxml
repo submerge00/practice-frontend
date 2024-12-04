@@ -1,0 +1,60 @@
+<!--pages/test paper/test paper.wxml-->
+<!--pages/test paper/test paper.wxml-->
+<view class="body">
+  <view class="collect">
+    <view class="button-iteml">收藏</view>
+  </view>
+
+  <t-divider/>
+  <view class="demo">{{subject.type}} {{current}}/{{total}}</view> 
+  <view class="question">
+    <view class="title">{{subject.title}}</view>
+
+    <view wx:if="{{subject.type=='多选题'}}">
+    <wxs module="_"> module.exports.contain = function(arr, key) { return arr.indexOf(key) > -1 } </wxs>
+    <t-checkbox-group>
+      <view wx:for="{{subject.options}}" wx:key="index" class="card {{_.contain(subject.answer,item.code) ? 'card--active' : ''}}">
+         <t-checkbox
+          value="{{item.code}}"
+          content="{{item.code+'.'+item.option}}"
+          icon="none"
+          borderless
+          />
+      </view>
+     </t-checkbox-group>
+   </view>
+
+      <view wx:else="">
+   
+      <t-radio-group>
+        <view wx:for="{{subject.options}}" wx:key="index" class="card {{subject.answer == item.code ? 'card--active' : ''}}">
+          <t-radio value="{{item.code}}"  content="{{item.code+'.'+item.option}}" icon="none" borderless />
+        </view>
+      </t-radio-group>
+    </view>
+    
+    <view class="title">
+      <view>
+      正确答案是：
+      <text wx:for="{{subject.answer}}" wx:key="answer" >{{item}}</text>
+      </view>
+
+      <view>
+        您的选择是：
+        <text wx:for="{{subject.select}}" wx:key="select">{{item}}</text>
+      </view>
+      <view>
+          解析：
+          <text wx:for="{{subject.explain}}" wx:key="select">{{item}}</text>
+      </view>
+   </view>
+
+  </view>
+
+ 
+   <view class='btn_root'>
+        <button bind:tap="pre">上一题</button>
+        <button bind:tap="next" >下一题</button>
+  </view>
+
+</view>

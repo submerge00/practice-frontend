@@ -6,6 +6,8 @@
     "t-radio": "tdesign-miniprogram/radio/radio",
     "t-icon": "tdesign-miniprogram/icon/icon",
     "t-checkbox-group": "tdesign-miniprogram/checkbox-group/checkbox-group",
-    "t-checkbox": "tdesign-miniprogram/checkbox/checkbox"
+    "t-checkbox": "tdesign-miniprogram/checkbox/checkbox",
+    "t-cell": "tdesign-miniprogram/cell/cell",
+    "t-switch": "tdesign-miniprogram/switch/switch"
   }
 }

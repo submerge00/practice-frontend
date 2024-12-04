@@ -1,0 +1,177 @@
+/* pages/daoru/daoru.wxss */
+.top-bg {
+  height: 290rpx;
+  background-color: #619aef;
+  background-image: url("https://i.ibb.co/QDT8hjP/bgp.png");
+}
+
+/* 圆角盒子 */
+.box {
+  background-color: rgb(248, 248, 248);
+  margin-top: -65rpx;
+  border-top-left-radius: 80rpx;
+  border-top-right-radius: 80rpx;
+  padding: 26rpx 20rpx 0;
+  z-index: 100;
+  position: relative; /* 设置相对定位 */
+}
+
+/* 导入类型盒子浮动在top盒子和圆角盒子之间 */
+.import-type {
+  width: 70%;
+  height: 90rpx;
+  background-color: rgb(255, 255, 255);
+  position: absolute; 
+  top: -35rpx; 
+  left: 15%; 
+  display: flex; 
+  justify-content: space-between; 
+  text-align: center;
+  line-height: 90rpx; 
+  color: white;
+  font-size: 28rpx;
+  border-radius: 50rpx;
+}
+
+.single-import {
+  background-color:#afaeae; 
+  border: none; 
+  color: rgb(20, 20, 20); 
+  font-size: 32rpx; 
+  padding: 8rpx 28rpx;
+  border-radius: 50rpx;
+  outline: none; 
+  flex: 1; 
+  text-align: center; 
+}
+
+.batch-import {
+  background-color:#ffffff; 
+  border: none; 
+  color: rgb(20, 20, 20); 
+  font-size: 32rpx; 
+  padding: 8rpx 28rpx;
+  border-radius: 50rpx;
+  outline: none; 
+  flex: 1; 
+  text-align: center; 
+}
+.import-btn {
+  margin-right: 20rpx; /* 设置按钮之间的间距 */
+}
+
+.import-btn:hover, 
+.modify-btn:hover {
+  background-color: rgba(255, 255, 255, 0.2); /* 悬停效果 */
+}
+
+/* 表单样式 */
+.Form {
+  margin-top: 30rpx;
+  margin-left: 10rpx;
+  margin-right: 10rpx;
+  padding: 20rpx;
+}
+
+.form-item {
+  margin-top: 20px;
+  margin-bottom: 20rpx;
+  width: 100%;
+  background-color: #fff;
+}
+
+.label {
+  font-size: 32rpx;
+  padding-left: 20rpx;
+  margin-bottom: 20rpx;
+  display: block;
+}
+
+textarea,
+input {
+  width: 90%;
+  margin-left: 20rpx;
+  padding: 10rpx;
+  border: 1px solid #ccc;
+  border-radius: 10rpx;
+  font-size: 26rpx;
+}
+
+.tigan-content ,
+.jiexi-content{
+  height: 100px;
+}
+
+.upload-btn {
+  background-color: #619aef;
+  color: white;
+  padding: 10rpx 20rpx;
+  border-radius: 20rpx;
+  font-size: 24rpx;
+}
+
+.image-preview {
+  margin-top: 10rpx;
+}
+
+.preview-img {
+  width: 100%;
+  height: auto;
+  border-radius: 10rpx;
+}
+
+/* 选项输入 */
+.option-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10rpx;
+}
+
+.option-label {
+  margin-left: 30rpx;
+  margin-right: 10rpx;
+  font-size: 32rpx;
+}
+
+.picker {
+  width: 100%;
+  padding: 10rpx;
+  border: 1px solid #ccc;
+  border-radius: 10rpx;
+  font-size: 26rpx;
+}
+
+/* 按钮组 */
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30rpx;
+}
+
+.submit-btn,
+.cancel-btn {
+  flex: 1;
+  margin: 0 10rpx;
+  padding: 20rpx;
+  font-size: 28rpx;
+  color: white;
+  border: none;
+  border-radius: 20rpx;
+  text-align: center;
+}
+
+.submit-btn {
+  background-color: #4caf50;
+}
+
+.cancel-btn {
+  background-color: #f44336;
+}
+
+.mb-16 {
+  margin-bottom: 32rpx;
+}
+
+radio-group {
+  padding-bottom: 10px;
+}

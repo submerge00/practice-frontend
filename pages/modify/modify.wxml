@@ -1,0 +1,59 @@
+<view class="body">
+<view class="body-top">
+  <view class="change">
+    <view class="button-iteml">1/50</view>
+  </view>
+  <view class="type">
+  单选题
+  </view>
+</view>
+  <t-divider/>
+
+  <view class="question">
+   <view class="question-contaniner">
+    <view class="title">现存最著名的三大金字塔包括：大金字塔(也称胡夫金字塔)、哈夫拉金字塔和门卡乌拉金字塔。</view>
+   </view>
+    
+    <view class="option">
+      <view class="option-item" wx:for="{{options}}" wx:key="index">
+        {{item.label}}.{{item.content}}
+        <t-icon name="edit" size="30rpx" bind:click="onEditOption" data-index="{{index}}" />
+      </view>
+    </view>
+  </view>
+
+  <!-- 新增选项 -->
+  <!-- <view class="add">
+    <t-icon class="add-icon" name="add-circle" size="48rpx" bind:click="onIconTap" />
+    <text>新增选项</text>
+  </view> -->
+
+  <view class="change">
+    <view class="button-iteml">《上一题</view>
+    <view class="button-item">下一题》</view>
+  </view>
+
+  <!-- 编辑选项的输入框（可以选择显示/隐藏） -->
+  <view wx:if="{{showEditModal}}" class="edit-modal">
+    <view class="modal-content">
+      <text>请输入修改后的选项内容</text>
+      <input class="input-style" type="text" bindinput="onInputChange" value="{{editOptionContent}}" placeholder="编辑选项" />
+      <view class="btn">
+        <button class="save-btn" bindtap="onSaveEdit">保存</button>
+        <button class="cancel-btn" bindtap="onCancelEdit">取消</button>
+      </view>
+    </view>
+  </view>
+
+  <!-- 新增选项的输入框（可以选择显示/隐藏） -->
+  <!-- <view wx:if="{{showAddOptionModal}}" class="edit-modal">
+    <view class="modal-content">
+      <text>请输入新增选项内容</text>
+      <input class="input-style" type="text" bindinput="onNewOptionInputChange" value="{{newOptionContent}}" placeholder="新增选项" />
+      <view class="btn">
+        <button class="save-btn" bindtap="onSaveAddOption">保存</button>
+        <button class="cancel-btn" bindtap="onCancelAddOption">取消</button>
+      </view>
+    </view>
+  </view> -->
+</view>

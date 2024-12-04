@@ -7,7 +7,7 @@ button{
   background-color: rgb(255, 255, 255);
   border-radius: 15px;
 }
-text{
+.item-text{
   margin-left: 40rpx;
   color: rgb(29, 29, 29);
   width: 60%;
@@ -60,4 +60,12 @@ text{
   position: absolute;
   top:80px;
   overflow:scroll;
+}
+.example-search {
+  background-color: var(--bg-color-demo);
+  padding: 16rpx 32rpx;
+}
+
+.example-search:not(:last-child) {
+  margin-bottom: 32rpx;
 }

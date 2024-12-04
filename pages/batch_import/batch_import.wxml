@@ -1,0 +1,25 @@
+<!-- pages/batch_import/batch_import.wxml -->
+<view class="top-bg"></view>
+
+<view class="box">
+  <view class="import-type">
+    <button class="single-import" bindtap="SingleImport">单题导入</button>
+    <button class="batch-import">批量导入</button>
+  </view>
+  <view class="title">请将您所需要导入的试题文件上传</view>
+  <view class="container">
+    <view class="icon">
+      <t-icon name="folder-open-1" size="100px" data-name="{{item}}" style="color: #71a7b4;" />
+      <view class="text1">支持Excel文件上传</view>
+      <view class="text2">需要符合一定的上传格式</view>
+      
+      <!-- 上传按钮 -->
+      <button class="import-btn" bindtap="onChooseFile">上传试题并导入</button>
+    </view>
+
+    <!-- 显示选择的文件 -->
+    <view wx:if="{{fileName}}">
+      <text>已选择文件: {{fileName}}</text>
+    </view>
+  </view>
+</view>

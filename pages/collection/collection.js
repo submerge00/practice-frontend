@@ -74,7 +74,7 @@ Component({
     toStart()
     {
       wx.navigateTo({
-        url: '../colletion detail/colletion detail',
+        url: '../collection detail/collection detail',
       })
     }
     

@@ -1,0 +1,122 @@
+/* pages/modify/modify.wxss */
+.question{
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+  padding-top: 20rpx;
+  height:auto ;
+}
+.title{
+  border:1px dashed #000;
+  padding:20rpx 30rpx;
+  font-size: 40rpx;
+  border-radius: 10rpx;
+}
+.title-image{
+  padding-left: 5vw;
+  width: 90vw;
+  padding-bottom: 5rpx;
+}
+.option{
+  margin-top: 50rpx;
+}
+.option-item{
+  border: 1px solid lightgray;
+  margin-bottom: 20rpx;
+  padding:20rpx 40rpx;
+  border-radius: 20rpx;
+}
+.success{
+  background-color: lightgreen;
+  color: #fff;
+}
+.fail{
+  background-color: red;
+  color: #fff;
+}
+.change{
+  display: inline-flex;
+  padding-left: 5px;
+}
+.button-iteml{
+  color: skyblue;
+}
+.button-item{
+  margin-left: 65vw;
+  color: skyblue;
+}
+
+.add {
+  display: flex;
+  align-items: center;  
+  justify-content: center;
+}
+
+.option-item {
+  display: flex;
+  align-items: center;  
+}
+
+.edit-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 20rpx;
+  border-radius: 10rpx;
+  width: 80%;
+}
+
+.input-style {
+  width: 100%; /* 输入框占满容器 */
+  height: 80rpx;
+  padding-left: 10rpx;
+  margin-top: 10rpx;
+  margin-bottom: 50rpx;
+  border-radius: 10rpx;
+  border: 1px solid #ccc; 
+  font-size: 28rpx;
+}
+
+.save-btn,
+.cancel-btn {
+  flex: 1;
+  margin: 0 10rpx;
+  padding: 20rpx;
+  font-size: 28rpx;
+  color: white;
+  border: none;
+  border-radius: 20rpx;
+  text-align: center;
+}
+
+.save-btn {
+  background-color: green;
+}
+
+.cancel-btn {
+  background-color: #f44336;
+}
+
+.btn {
+  display: flex;
+}
+
+.body-top {
+  display: flex;
+}
+
+.type {
+  border: 1px solid rgb(168, 168, 168);
+  border-radius: 50rpx;
+  margin-left: 290px;
+  margin-top: 2px;
+}

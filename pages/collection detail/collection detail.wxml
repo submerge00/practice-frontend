@@ -1,0 +1,17 @@
+<!--pages/wrong detail/wrong detail.wxml-->
+<view>
+  <view >
+    <view class="example-search">
+    <t-search placeholder="搜索题目" shape="round" />
+    </view>
+  </view>
+  
+  <t-divider/>
+  <view>
+    <view  wx:for="{{subjects}}" wx:for-index='index' wx:key="id">
+      <t-cell bind:tap="toStart" data-item="{{item}}" data-index="{{index}}" description="{{item.title}}" hover arrow />   
+    </view>
+  </view>
+</view>
+
+

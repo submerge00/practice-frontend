@@ -8,13 +8,15 @@
     "pages/wrong/wrong",
     "pages/collection/collection",
     "pages/test paper/test paper",
+    "pages/errorOptions/errorOptions",
     "pages/subject/subject",
     "pages/wrong detail/wrong detail",
     "pages/wrong text/wrong text",
-    "pages/colletion detail/colletion detail",
-    "pages/colletion text/colletion text",
-    "pages/all/all",
-    "pages/selectpaper/selectpaper"
+    "pages/collection detail/collection detail",
+    "pages/collection text/collection text",
+    "pages/modify/modify",
+    "pages/daoru/daoru",
+    "pages/batch_import/batch_import"
   ],
   "window": {
     "navigationBarTextStyle": "black",

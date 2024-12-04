@@ -1,18 +1,21 @@
 <!--pages/paper/paper.wxml-->
 <view class="container">
-  <view class="box">选择科目</view>
+  <view class="box">
+    <view class="example-search">
+    <t-search placeholder="搜索题库" shape="round" />
+    </view>
+  </view>
   
   <view class="stack-top">
     <view class="button-text" wx:for="{{array}}" wx:key="id">
-      <text >{{item}}</text>
+      <text class='item-text' >{{item.name}}</text>
       
-      <button bind:tap="toStart">选择</button>
+      <button bind:tap="showDescAction"  data-item="{{item}}">查看</button>
+
     </view>
     
   </view>
- 
-    
-  
   
 
 </view>
+<t-action-sheet id="t-action-sheet" usingCustomNavbar bind:selected="handleSelected" />

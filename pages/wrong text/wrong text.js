@@ -1,78 +1,59 @@
-// pages/test paper/test paper.js
+// pages/errorOptions/errorOptions.js
+let titles=[]
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    total:0,
+    current:1
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-
+    let arr=wx.getStorageSync('subjectNow')
+    let index=wx.getStorageSync('index')
+    console.log('错题集',arr)
+    if(arr&&arr.length>0)
+    {
+      titles=arr
+    }
+    this.setData({
+      subject:titles[index],
+      total:titles.length,
+      current:index+1
+    })
+    console.log('错题集',titles)
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {
-
+  pre(){
+    if(this.data.current-1<=0){
+      wx.showToast({
+        title: '已经是第一个了',
+        icon:'none'
+      })
+    }else{
+      this.setData({
+        current:this.data.current-1,
+        subject:titles[this.data.current-2]
+      })
+    }
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage() {
+  next(){
+    if(this.data.current+1>titles.length){
+      wx.showToast({
+        title: '已经是最后一个了',
+        icon:'none'
+      })
+    }else{
+      this.setData({
+        current:this.data.current+1,
+        subject:titles[this.data.current]
+      })
+    }
 
   }
 })
-Component({
-  data: {
-    value: 2,
-    array: ['A.大学计算机期末考试', 'B.计算机二级office', 'C.毛概期末考试', 'D.中国近代史期末考试'],
-  },
-  methods: {
-    onChange(e) {
-      this.setData({ value: e.detail.value });
-    },
-    
-  },
-});

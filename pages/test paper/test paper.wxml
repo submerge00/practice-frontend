@@ -1,47 +1,85 @@
 <!--pages/test paper/test paper.wxml-->
 <view class="body">
-  <view class="change">
-    <view class="button-iteml">收藏</view>
-    <view class="button-item" bind:tap="toStart"> 题目总览</view>
+  <view class='top_change'>
+  <text>收藏</text>
+  <view class='top_change'>
+  <text>是否自动跳转题目</text>
+    <t-switch bindchange="handleChange" defaultValue="{{true}}" size="small" slot="note"/>
   </view>
-<t-divider/>
-  <view class="demo">单选题</view>
-
-  <view class="question">
-    <view class="title">现存最著名的三大金字塔包括：大金字塔(也称胡夫金字塔)、哈夫拉金字塔和门卡乌拉金字塔。<image style="margin: 15px 8px;" mode="widthFix" src="/image/屏幕截图 2024-10-16 131614.png"/></view>
-
-    <t-radio-group value="{{value}}" allow-uncheck bind:change="onChange">
-  <view wx:for="{{array}}" wx:key="index" class="card {{value == index ? 'card--active' : ''}}">
-    <t-icon wx:if="{{value == index}}" name="check" t-class="card__icon" />
-    <t-radio value="{{index}}"  content="{{item}}" icon="none" borderless />
+  
   </view>
-</t-radio-group>
+  
+  <t-divider/>
 
-<view class="demo">多选题</view>
-<wxs module="_"> module.exports.contain = function(arr, key) { return arr.indexOf(key) > -1 } </wxs>
-<t-checkbox-group value="{{value1}}" bind:change="onChange1">
-  <view wx:for="{{array}}" wx:key="index" class="card {{_.contain(value1, index) ? 'card--active' : ''}}">
-    <t-icon wx:if="{{_.contain(value1, index)}}" name="check" t-class="card__icon" ariaHidden="{{true}}" />
-    <t-checkbox
-      value="{{index}}"
-      content="{{item}}"
-      icon="none"
-      borderless
-    />
+  <view class="progress-box">
+  <progress percent="{{percent}}" color="#10AEFF"  stroke-width="5" border-radius="50px"/>
   </view>
-</t-checkbox-group>
+  <view class="demo">{{subject.type}} {{current}}/{{titlesLength}}</view>
 
-<view class="demo">判断题</view>
-<t-radio-group value="{{value}}" allow-uncheck bind:change="onChange">
-  <view wx:for="{{TorF}}" wx:key="index" class="card {{value == index ? 'card--active' : ''}}">
-    <t-icon wx:if="{{value == index}}" name="check" t-class="card__icon" />
-    <t-radio value="{{index}}"  content="{{item}}" icon="none" borderless />
-  </view>
-</t-radio-group>
+ <view class="question">
+      <view class="title">{{subject.title}}</view>
 
+  <view wx:if="{{subject.type=='多选题'}}">
+    <wxs module="_"> module.exports.contain = function(arr, key) { return arr.indexOf(key) > -1 } </wxs>
+    <t-checkbox-group value="{{value1}}" bind:change="onChange1" disabled="{{isdisable}}">
+      <view wx:for="{{subject.options}}" wx:key="index" class="card {{!isdisable?(_.contain(value1,item.code) ? 'card--active' : ''):(_.contain(value1,item.code)?(subject.iscorrect?'card--right':'card--wrong'):'')}}">
+         <t-checkbox
+          value="{{item.code}}"
+          content="{{item.code+'.'+item.option}}"
+          icon="none"
+          borderless
+          />
+      </view>
+     </t-checkbox-group>
+
+     <button type="primary" class="btn_bottom2" bind:tap="msubmit"disabled="{{isdisable}}">提交答案</button>
+   </view>
+
+  <view wx:else="">
+      <t-radio-group value="{{value}}" allow-uncheck bind:change="onChange" disabled="{{isdisable}}">
+        <view wx:for="{{subject.options}}" wx:key="index" class="card {{!isdisable?(value == item.code ? 'card--active' : ''):(value==item.code?(value==subject.answer?'card--right':'card--wrong'):'')}}">
+          <t-radio value="{{item.code}}"  content="{{item.code+'.'+item.option}}" icon="none" borderless />
+        </view>
+      </t-radio-group>
+
+      
+      <button class='btn_bottom2' type="primary" bind:tap="submit" disabled="{{isdisable}}">提交答案</button>
+    </view>
+
+    <view wx:if="{{showAnswer}}" class="title">
+          <view>
+          正确答案是：
+          <text wx:for="{{subject.answer}}" wx:key="answer" >{{item}}</text>
+          </view>
+
+          <view>
+          您的选择是：
+          <text wx:for="{{subject.select}}" wx:key="select">{{item}}</text>
+          </view>
+
+          <view>
+          解析：
+          <text wx:for="{{subject.explain}}" wx:key="select">{{item}}</text>
+          </view>
+      </view>
+    <view wx:if="{{finalScore>-1}}">
+  <view class='message'>
+    恭喜你一共答对了{{finalScore}}道题！
   </view>
-  <view class="change">
-  <view class="button-iteml">《上一题</view>
-  <view class="button-item">下一题》</view>
+  <view>
+    <view class='message'>
+    您答错了{{titlesLength-finalScore}}道题！
+    <text class='message--color' bind:tap="seeError" wx:if="{{titlesLength-finalScore>0}}">点击查看错题</text>
+    </view>
   </view>
 </view>
+
+  </view>
+  
+  </view>
+
+
+  <view class="change">
+  <button class="btn_bottom1" bind:tap="pre" wx:if="{{current!=1}}">上一题</button>
+  <button class="btn_bottom3" bind:tap="next" wx:if="{{current!=titlesLength}}">下一题</button>
+  </view>
