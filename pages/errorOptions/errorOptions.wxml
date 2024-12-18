@@ -8,15 +8,15 @@
   <t-divider/>
   <view class="demo">{{subject.type}} {{current}}/{{total}}</view> 
   <view class="question">
-    <view class="title">{{subject.title}}</view>
+    <view class="title">{{subject.question}}</view>
 
     <view wx:if="{{subject.type=='多选题'}}">
     <wxs module="_"> module.exports.contain = function(arr, key) { return arr.indexOf(key) > -1 } </wxs>
     <t-checkbox-group>
-      <view wx:for="{{subject.options}}" wx:key="index" class="card {{_.contain(subject.answer,item.code) ? 'card--active' : ''}}">
+      <view wx:for="{{subject.options.options}}" wx:key="index" class="card {{_.contain(subject.answer.content,item.id) ? 'card--active' : ''}}">
          <t-checkbox
-          value="{{item.code}}"
-          content="{{item.code+'.'+item.option}}"
+          value="{{item.id}}"
+          content="{{item.id+'.'+item.content}}"
           icon="none"
           borderless
           />
@@ -27,8 +27,8 @@
       <view wx:else="">
    
       <t-radio-group>
-        <view wx:for="{{subject.options}}" wx:key="index" class="card {{subject.answer == item.code ? 'card--active' : ''}}">
-          <t-radio value="{{item.code}}"  content="{{item.code+'.'+item.option}}" icon="none" borderless />
+        <view wx:for="{{subject.options.options}}" wx:key="index" class="card {{subject.answer.content == item.id? 'card--active' : ''}}">
+          <t-radio value="{{item.id}}"  content="{{item.id+'.'+item.content}}" icon="none" borderless />
         </view>
       </t-radio-group>
     </view>
@@ -36,7 +36,7 @@
     <view class="title">
       <view>
       正确答案是：
-      <text wx:for="{{subject.answer}}" wx:key="answer" >{{item}}</text>
+      <text wx:for="{{subject.answer.content}}" wx:key="answer" >{{item}}</text>
       </view>
 
       <view>
@@ -45,7 +45,7 @@
       </view>
       <view>
           解析：
-          <text wx:for="{{subject.explain}}" wx:key="select">{{item}}</text>
+          <text wx:for="{{subject.explanation}}" wx:key="select">{{item}}</text>
       </view>
    </view>
 

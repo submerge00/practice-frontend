@@ -1,4 +1,10 @@
 /* pages/study/study.wxss */
+button {
+  width: 26%;
+  height: 40px; 
+  font-size: 32rpx; 
+  border-radius: 15rpx;
+}
 /* 设置背景颜色 */
 .top-bg {
   height: 290rpx;
@@ -177,9 +183,7 @@ textarea {
   justify-content: space-between; /* 确保按钮之间的间距 */
 }
 
-button {
-  width: 26%;
-  height: 40px; 
-  font-size: 32rpx; 
-  border-radius: 15rpx;
+.tab{
+  width: 20rpx;
+  height: 20rpx;
 }

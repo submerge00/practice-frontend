@@ -17,33 +17,7 @@
     style="width: 100%;border-top: none;" 
     open-type="getPhoneNumber"
     bindgetphonenumber="bindPhoneNumber">
-      <view class="left">
-        <fui-icon name="telephone" size="{{40}}"></fui-icon>
-        <text class="text">绑定手机号</text>
-      </view>
-      <view class="right">》</view>
-    </button>
-    <button 
-    class="row" 
-    style="width: 100%;" 
-    bindtap="navigateToPage"
-    data-url="/pages/collection/collection">
-      <view class="left">
-        <fui-icon name="star" size="{{40}}"></fui-icon>
-        <text class="text">我的收藏</text>
-      </view>
-      <view class="right">》</view>
-    </button>
-    <button 
-    class="row" 
-    style="width: 100%;border-bottom: none;" 
-    bindtap="navigateToPage"
-    data-url="/pages/wrong/wrong">
-      <view class="left">
-        <fui-icon name="order" size="{{40}}"></fui-icon>
-        <text class="text">我的错题</text>
-      </view>
-      <view class="right">》</view>
+
     </button>
   </view>
 </view>
