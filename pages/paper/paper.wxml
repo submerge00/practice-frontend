@@ -2,13 +2,22 @@
 <view class="container">
   <view class="box">
     <view class="example-search">
-    <t-search placeholder="搜索题库" shape="round" />
+      <t-search
+      value="{{value}}"
+      center
+      placeholder="搜索题库"
+      action="{{actionText}}"
+      bind:blur="blurHandle"
+      bind:change="changeHandle"
+      bind:submit="submitHandle"
+      shape="round"
+    />
     </view>
   </view>
   
   <view class="stack-top">
-    <view class="button-text" wx:for="{{array}}" wx:key="id">
-      <text class='item-text' >{{item.name}}</text>
+    <view class="button-text" wx:for="{{filteredList}}" wx:key="id">
+      <text class='item-text' >{{item.Title}}</text>
       
       <button bind:tap="showDescAction"  data-item="{{item}}">查看</button>
 
@@ -18,4 +27,4 @@
   
 
 </view>
-<t-action-sheet id="t-action-sheet" usingCustomNavbar bind:selected="handleSelected" />
+<t-action-sheet id="t-action-sheet"  usingCustomNavbar bind:selected="handleSelected" />

@@ -1,5 +1,5 @@
 <!--pages/home/home.wxml-->
-<view>
+<view style="height: 1099rpx; display: block; box-sizing: border-box">
   <view class="card-theme">
     <t-swiper
     class="scale-card-theme"
