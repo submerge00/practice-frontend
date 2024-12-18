@@ -183,7 +183,4 @@ textarea {
   justify-content: space-between; /* 确保按钮之间的间距 */
 }
 
-.tab{
-  width: 20rpx;
-  height: 20rpx;
 }

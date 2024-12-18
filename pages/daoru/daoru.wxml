@@ -10,22 +10,20 @@
 <view class="Form">
   <!-- 题型选择 -->
   <view class="form-group">
-    <!-- <text class="form-label">题型选择：</text> -->
-    <t-cell title="请选择题型" arrow hover note="{{city2Text}}" bind:click="onWithoutTitlePicker" />
-    <t-picker
-      visible="{{city2Visible}}"
-      value="{{city2Value}}"
-      data-key="city2"
-      title="{{city2Title}}"
-      cancelBtn="取消"
-      confirmBtn="确认"
-      usingCustomNavbar
-      bindchange="onPickerChange"
-      bindpick="onColumnChange"
-      bindcancel="onPickerCancel"
-    >
-      <t-picker-item options="{{types}}"></t-picker-item>
-    </t-picker>
+    <t-cell title="请选择题型" arrow hover note="{{selectedType}}" bind:click="onTypePicker" />
+  <t-picker
+    visible="{{typePickerVisible}}"
+    value="{{typePickerValue}}"
+    data-key="typePicker"
+    title="选择题型"
+    cancelBtn="取消"
+    confirmBtn="确认"
+    usingCustomNavbar
+    bindchange="onPickerChange"
+    bindcancel="onPickerCancel"
+  >
+    <t-picker-item options="{{types}}"></t-picker-item>
+  </t-picker>
   </view>
 
   <!-- 题干输入 -->
@@ -34,17 +32,8 @@
     <textarea class="tigan-content" placeholder="请输入题干内容" bindinput="onStemInput"></textarea>
   </view>
 
-  <!-- 图片输入（可选） -->
-  <view class="form-item">
-    <text class="label">图片（可选）：</text>
-    <button class="upload-btn" bindtap="onUploadImage">上传图片</button>
-    <view wx:if="{{imageUrl}}" class="image-preview">
-      <image src="{{imageUrl}}" class="preview-img" />
-    </view>
-  </view>
-
   <!-- 选项输入 -->
-  <view class="form-item">
+  <view class="form-item" wx:if="{{selectedType === '单选题' || selectedType === '多选题'}}">
     <text class="label">选项：</text>
     <view wx:for="{{['A', 'B', 'C', 'D']}}" wx:key="index" class="option-item">
       <text class="option-label">{{item}}:</text>
@@ -53,14 +42,37 @@
   </view>
 
  <!-- 正确选项 -->
-<view class="form-item">
-  <text class="label">正确选项：</text>
-  <radio-group bindchange="onCorrectOptionChange">
-    <label wx:for="{{['A', 'B', 'C', 'D']}}" wx:key="index" class="radio-label">
-      <radio value="{{item}}" checked="{{correctOption === item}}" /> {{item}}
-    </label>
-  </radio-group>
-</view>
+  <view class="form-item" wx:if="{{selectedType === '单选题'}}">
+    <text class="label">正确选项：</text>
+    <radio-group bindchange="onCorrectOptionChange">
+      <label wx:for="{{['A', 'B', 'C', 'D']}}" wx:key="index" class="radio-label">
+        <radio value="{{item}}" checked="{{correctOption === item}}" /> {{item}}
+      </label>
+    </radio-group>
+  </view>
+
+  <!-- 如果是多选题，显示复选框 -->
+  <!-- 多选题，复选框 -->
+  <view class="form-item" wx:if="{{selectedType === '多选题'}}">
+    <text class="label">正确选项：</text>
+    <checkbox-group bindchange="handleMultipleChoiceChange" value="{{correctOption}}">
+      <label wx:for="{{['A', 'B', 'C', 'D']}}" wx:key="index" class="checkbox-label">
+        <checkbox value="{{item}}" checked="{{correctOption.includes(item)}}" /> {{item}}
+      </label>
+    </checkbox-group>
+  </view>
+
+
+  <!-- 判断题 -->
+  <view class="form-item" wx:if="{{selectedType === '判断题'}}">
+      <text class="label">正确选项：</text>
+      <radio-group bindchange="onCorrectOptionChange">
+        <label wx:for="{{['A', 'B']}}" wx:key="index" class="radio-label">
+          <radio value="{{item}}" checked="{{correctOption === item}}" /> {{item}}
+        </label>
+      </radio-group>
+    </view>
+
 
   <!-- 题目解析（可选） -->
   <view class="form-item">
