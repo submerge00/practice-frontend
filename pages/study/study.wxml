@@ -13,11 +13,27 @@
   <view class="list-bar">
     <block wx:for="{{filteredList}}" wx:key="id">
       <view class="list-item">
-        <view class="title">{{item.title}}</view>
+        <view class="title">{{item.name}}</view> 
         <view class="description">{{item.description}}</view>
         <view class="buttons">
-          <t-button class="button-left" theme="primary" size="extra-small" shape="round" bindtap="onImport" style="background-color:rgb(204, 230, 255);color:rgb(77, 166, 254)" variant="text">导入</t-button>
-          <t-button class="button-right" theme="primary" size="extra-small" shape="round" bindtap="onModify" style="background-color:rgb(215, 240, 219);color:rgb(109, 202, 123)" variant="text">修改</t-button>
+          <t-button 
+        class="button-left" 
+        theme="primary" 
+        size="extra-small" 
+        shape="round" 
+        bindtap="onImport" 
+        style="background-color:rgb(204, 230, 255);color:rgb(77, 166, 254)" 
+        variant="text" 
+        data-id="{{item.id}}">导入</t-button>
+      <t-button 
+        class="button-right" 
+        theme="primary" 
+        size="extra-small" 
+        shape="round" 
+        bindtap="onModify" 
+        style="background-color:rgb(215, 240, 219);color:rgb(109, 202, 123)" 
+        variant="text" 
+        data-id="{{item.id}}">修改</t-button>
         </view>
       </view>
     </block>

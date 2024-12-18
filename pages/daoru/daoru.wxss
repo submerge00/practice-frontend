@@ -175,3 +175,9 @@ input {
 radio-group {
   padding-bottom: 10px;
 }
+
+.radio-checked {
+  background-color: #4CAF50;  /* 绿色背景 */
+  border-color: #4CAF50;      /* 绿色边框 */
+  color: white;               /* 白色文字 */
+}
