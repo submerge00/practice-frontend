@@ -182,5 +182,3 @@ textarea {
   display: flex;
   justify-content: space-between; /* 确保按钮之间的间距 */
 }
-
-}
