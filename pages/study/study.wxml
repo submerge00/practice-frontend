@@ -51,6 +51,7 @@
     usingCustomNavbar
     draggable
     y-bounds="{{[0, 32]}}"
+    
   ></t-fab>
 </view>
 

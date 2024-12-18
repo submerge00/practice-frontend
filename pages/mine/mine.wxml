@@ -12,14 +12,24 @@
   </view>
   <!-- 第一部分列表 -->
   <view >
-    <button open-type="share" class="row" style="width: 100%;">
+    <button 
+    class="row login-button" 
+    style="width: 100%;border-top: none;" 
+    open-type="getPhoneNumber"
+    bindgetphonenumber="bindPhoneNumber">
+
+    </button>
+  </view>
+</view>
+<!-- 第二部分列表 -->
+<view class="end">
+  <button open-type="share" class="row" style="width: 100%;">
     <view class="left">
       <fui-icon name="share" size="{{40}}"></fui-icon>
       <text class="text">分享</text>
     </view>
     <view class="right">》</view>
   </button>
-  </view>
 </view>
 <!-- 第三部分列表 -->
 <view class="end">

@@ -1,53 +1,4 @@
-const titles=[{
-  title:'1+1=?',
-  type:'单选题',
-  answer:'A',
-  explain:'1+1=2',
-  options:[{
-    code:'A',
-    option:'2'
-  },{
-    code:'B',
-    option:'3'
-  },{
-    code:'C',
-    option:'4'
-  },{
-    code:'D',
-    option:'5'
-  },
-  ]
-},{
-  title:'1+1<?',
-  type:'多选题',
-  answer:['B','C','D'],
-  options:[{
-    code:'A',
-    option:'2'
-  },{
-    code:'B',
-    option:'3'
-  },{
-    code:'C',
-    option:'4'
-  },{
-    code:'D',
-    option:'5'
-  },
-  ]
-},{
-  title:'1+1=2',
-  type:'判断题',
-  answer:'A',
-  options:[{
-    code:'A',
-    option:'正确'
-  },{
-    code:'B',
-    option:'错误'
-  },
-  ]
-},];
+
 let errorOptions=[];
 let doneOptions=[];
 Page({
@@ -56,15 +7,15 @@ Page({
    * 页面的初始数据
    */
   data: {
+    titles:[],
     value: -1,
     value1: [-1, -1],
     current:1,
     subject:null,
     select:'',
-    mselect:[],
+    mselect:'',
     titlesLength:0,
     doneLength:0,
-    percent:0,
     score:0,
     finalScore:-1,
     isdisable:false,
@@ -76,16 +27,40 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad() {
-    let subject=titles[0]
-    console.log('subject',subject)
-    this.setData({
-      subject:subject,
-      titlesLength:titles.length,
-      score:0
-    })
-    doneOptions=[];
-    errorOptions=[];
+  onLoad(options) {
+    const token=wx.getStorageSync('token')
+    wx.request({
+      url: 'https://practice.halfmaple.vip/question/v1/list', 
+      method: 'GET',
+      data: { 
+        knowledgeBaseId:options.id
+      },  // 请求体中传递 code
+      header: {
+        'Content-Type': 'application/json', 
+        'Cache-Control': 'no-cache',  // 禁用缓存
+        'Authorization':`Bearer ${token}`,
+      },
+      success: (response) => {
+        console.log("后端返回数据：", response.data.data.list);
+        this.setData({
+          titles:response.data.data.list
+        })
+        console.log('titles',this.data.titles)
+        if (this.data.titles.length > 0) {
+          let subject = this.data.titles[0];
+          console.log('subject',subject)
+          this.setData({
+            subject:subject,
+            titlesLength:this.data.titles.length,
+            score:0
+          })
+          doneOptions=[];
+          errorOptions=[];
+        }
+      },
+    });
+    
+    
   },
 
   onChange(e) {
@@ -115,15 +90,14 @@ Page({
     }
 
     let num=this.data.current+1;
-    let subject=titles[num-1];
+    let subject=this.data.titles[num-1];
     this.setData({
-      percent:((num-1)/titles.length)*100,
       isdisable:true,
       showAnswer:true,
       doneLength:doneOptions.length,
     })
 
-   if(titles[num-2].answer==this.data.select){
+   if(this.data.titles[num-2].answer.content==this.data.select){
      this.setData({
        score:this.data.score+1,
        iscorrect:true
@@ -150,7 +124,7 @@ Page({
     console.log('已完成',subjectNow)
     doneOptions.push(subjectNow)
     
-    if(num>titles.length)
+    if(num>this.data.titles.length)
     {
       this.setData({
         finalScore:this.data.score
@@ -178,6 +152,9 @@ Page({
 
   },
   msubmit(){
+    let titles=this.data.titles
+    let isCorrect=false//判断是否正确
+    let score=this.data.score//计算正确数量
 
     let userSelect=this.data.mselect
     if(!userSelect){
@@ -186,22 +163,17 @@ Page({
         icon:'none'
       })
       return
-    }
+    }//如果为空显示‘请做选择’
 
-    console.log('用户选择了',this.data.mselect);
-    let num=this.data.current+1;
-    let subject=titles[num-1];
-    this.setData({
-      percent:((num-1)/titles.length)*100,
-      isdisable:true,
-      showAnswer:'true'
-    })
+    let num=this.data.current+1;//当前题目数量+1
+    let subject=titles[num-1];//subject为下一个题目
+    console.log('下一个题目',subject);
 
-    let arr1=titles[num-2].answer;
-    let len1=arr1.length;
+    let arr1=this.data.titles[num-2].answer.content;
+    let len1=arr1.length;//答案长度
 
     let arr2=this.data.mselect;
-    let len2=arr2.length;
+    let len2=arr2.length;//用户选择长度
     
     if(len1==len2){
       let rightNum=0;
@@ -209,35 +181,41 @@ Page({
         if(arr1.indexOf(item)>-1){
           rightNum++;
         }
-      })
+      })//判断正确选项个数
       if(rightNum==len1){
-        this.setData({
-          score:this.data.score+1,
-          iscorrect:'true'
-        })
-        wx.showToast({
-          title: '答对啦',
-        })
+        score=score+1
+        isCorrect=true
       }else{
-        this.setData({
-          iscorrect:'false'
-        })
-        let subjectNow=this.data.subject
-      subjectNow.select=userSelect
-      console.log('错题',subjectNow)
-      errorOptions.push(subjectNow)
-        wx.showToast({
-          icon:'none',
-          title: '答错了',
-        })
+        isCorrect=false
       }
     }else{
+      isCorrect=false
+    }
+
+    let subjectNow =titles[num-2]
+    subjectNow.select=userSelect
+    subjectNow.iscorrect=isCorrect
+
+    doneOptions.push(subjectNow)
+    
+    if(isCorrect)
+    {
       this.setData({
-        iscorrect:'false'
+        iscorrect:isCorrect,
+        select:userSelect,
+        isdisable:true,
+        showAnswer:true
       })
-      let subjectNow=this.data.subject
-      subjectNow.select=userSelect
-      console.log('错题',subjectNow)
+      wx.showToast({
+        title: '答对啦！',
+      })
+    }else{
+      this.setData({
+        iscorrect:isCorrect,
+        select:userSelect,
+        isdisable:true,
+        showAnswer:true
+      })
       errorOptions.push(subjectNow)
       wx.showToast({
         icon:'none',
@@ -245,16 +223,13 @@ Page({
       })
     }
 
-    let subjectNow=this.data.subject
-    subjectNow.select=userSelect
-    subjectNow.iscorrect=this.data.iscorrect
-    console.log('已完成',subjectNow)
-    doneOptions.push(subjectNow)
+    console.log('已完成',doneOptions)
+    console.log('错题',errorOptions)
 
-    if(num>titles.length)
+    if(num>this.data.titles.length)
     {
       this.setData({
-        finalScore:this.data.score
+        finalScore:score
       })
       wx.showToast({
         icon:'none',
@@ -273,17 +248,14 @@ Page({
         doneLength:doneOptions.length,
         isdisable:false,
         showAnswer:false,
-        iscorrect:'false'
+        iscorrect:false
       })
     }
+
   },
   
   pre(){
     let num=this.data.current-1;
-    this.setData({
-      percent:((num-1)/titles.length)*100
-    })
-       
     if(num<=0)
     {
       wx.showToast({
@@ -306,7 +278,7 @@ Page({
   },
   next(){
     let num=this.data.current+1;
-    let undonesubject=titles[num-1];
+    let undonesubject=this.data.titles[num-1];
 
     if(num>doneOptions.length+1)
     {
@@ -316,10 +288,6 @@ Page({
       })
       return 
     }
-
-    this.setData({
-      percent:((num-1)/titles.length)*100
-    })
 
     if(num==doneOptions.length+1)
     {

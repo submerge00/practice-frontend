@@ -17,15 +17,15 @@
   <view class="demo">{{subject.type}} {{current}}/{{titlesLength}}</view>
 
  <view class="question">
-      <view class="title">{{subject.title}}</view>
+      <view class="title">{{subject.question}}</view>
 
   <view wx:if="{{subject.type=='多选题'}}">
     <wxs module="_"> module.exports.contain = function(arr, key) { return arr.indexOf(key) > -1 } </wxs>
     <t-checkbox-group value="{{value1}}" bind:change="onChange1" disabled="{{isdisable}}">
-      <view wx:for="{{subject.options}}" wx:key="index" class="card {{!isdisable?(_.contain(value1,item.code) ? 'card--active' : ''):(_.contain(value1,item.code)?(subject.iscorrect?'card--right':'card--wrong'):'')}}">
+      <view wx:for="{{subject.options.options}}" wx:key="index" class="card {{!isdisable?(_.contain(value1,item.id) ? 'card--active' : ''):(_.contain(value1,item.id)?(iscorrect?'card--right':'card--wrong'):'')}}">
          <t-checkbox
-          value="{{item.code}}"
-          content="{{item.code+'.'+item.option}}"
+          value="{{item.id}}"
+          content="{{item.id+'.'+item.content}}"
           icon="none"
           borderless
           />
@@ -37,8 +37,8 @@
 
   <view wx:else="">
       <t-radio-group value="{{value}}" allow-uncheck bind:change="onChange" disabled="{{isdisable}}">
-        <view wx:for="{{subject.options}}" wx:key="index" class="card {{!isdisable?(value == item.code ? 'card--active' : ''):(value==item.code?(value==subject.answer?'card--right':'card--wrong'):'')}}">
-          <t-radio value="{{item.code}}"  content="{{item.code+'.'+item.option}}" icon="none" borderless />
+        <view wx:for="{{subject.options.options}}" wx:key="index" class="card {{!isdisable?(value == item.id ? 'card--active' : ''):(value==item.id?(value==subject.answer.content?'card--right':'card--wrong'):'')}}">
+          <t-radio value="{{item.id}}"  content="{{item.id+'.'+item.content}}" icon="none" borderless />
         </view>
       </t-radio-group>
 
@@ -49,17 +49,17 @@
     <view wx:if="{{showAnswer}}" class="title">
           <view>
           正确答案是：
-          <text wx:for="{{subject.answer}}" wx:key="answer" >{{item}}</text>
+          <text wx:for="{{subject.answer.content}}" wx:key="answer" >{{item}}</text>
           </view>
 
           <view>
           您的选择是：
-          <text wx:for="{{subject.select}}" wx:key="select">{{item}}</text>
+          <text wx:for="{{select}}" wx:key="select">{{item}}</text>
           </view>
 
           <view>
           解析：
-          <text wx:for="{{subject.explain}}" wx:key="select">{{item}}</text>
+          <text wx:for="{{subject.explanation}}" wx:key="select">{{item}}</text>
           </view>
       </view>
     <view wx:if="{{finalScore>-1}}">
@@ -77,7 +77,6 @@
   </view>
   
   </view>
-
 
   <view class="change">
   <button class="btn_bottom1" bind:tap="pre" wx:if="{{current!=1}}">上一题</button>
